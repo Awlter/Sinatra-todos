@@ -1,0 +1,31 @@
+<section id="todos">
+  <header>
+    <h2>Editing '<%= @list[:name] %>'</h2>
+    <ul>
+      <li>
+        <form action="/lists/<%= @list_id %>/destroy" method="post">
+          <button type="submit" class="delete">Delete List</button>
+        </form>
+      </li>
+    </ul>
+  </header>
+</section>
+
+<% content_for :header_links do %>
+  <a class="list" href="/lists">All list</a>
+<% end %>
+
+<form action="/lists/<%= @list_id %>/edit" method="post">
+  <dl>
+    <dt>
+      <label for="list_name">Enter a new name for the list:</label>
+    </dt>
+    <dd>
+      <input name="list_name" placeholder="" type="text" value="<%= params[:list_name] || @list[:name] %>">
+    </dd>
+  </dl>
+  <fieldset class="actions">
+    <input type="submit" value="Update">
+    <a href="/lists/<%= @list_id %>">Cancel</a>
+  </fieldset>
+</form>
